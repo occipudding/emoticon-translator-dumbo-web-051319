@@ -14,12 +14,16 @@ def load_library(path)
   new_hash
 end
 
+def display_result(category, emoticon)
+  category.key?(emoticon) ? category[emoticon] : "Sorry, that emoticon was not found"
+end
+
 def get_japanese_emoticon(path, emoticon)
   library = load_library(path)
-  library["get_emoticon"].key?(emoticon) ? library["get_emoticon"][emoticon] : "Sorry, that emoticon was not found"
+  display_result(library["get_emoticon"], emoticon)
 end
 
 def get_english_meaning(path, emoticon)
   library = load_library(path)
-  binding.pry
+  display_result(library["get_meaning"], emoticon)
 end
